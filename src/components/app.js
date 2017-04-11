@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Button from './button';
 
-// with '<Button />', I'm creating an instance, a version, of Button (a React component)
-const App = () => (
-  <div>
-    <Button name={'Click'} clicked={() => console.log('clicked')} />
-    <Button name={'Search'} />
-  </div>
-);
+export default class App extends Component {
 
-export default App;
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 0,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.counter}
+        <Button name={'Add One'} clicked={() => this.setState({ counter: this.state.counter + 1 })}/>
+      </div>
+    );
+  }
+}
